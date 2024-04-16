@@ -9,7 +9,7 @@ I'm Anna 👩🏻‍💻 . This repository holds my Python programming projects.
   * An image that blurs the original image. The method we use is to change the original pixel value to the average of this pixel and its neighboring pixels.
     <p></p>
 * [Paint](https://github.com/annachen88/PythonProjects/tree/main/projects/paint)
-  * python drawing & animation.
+  * python drawing & animation
   * drawing line game ➤ *[DEMO VIDEOS!](https://youtube.com/shorts/xwbMQSIXqnU)*
   * bouncing ball animation ➤ *[DEMO VIDEOS!](https://youtu.be/zsiY0KO49yI)*
   <p></p>
