@@ -16,14 +16,12 @@ from typing import List
 
 class Solution:
     """
-    Hint : Use Two Pointer with buy and sell timing
+    Hint: Use Two Pointer with buy and sell timing
     Input: prices = [7,1,5,3,6,4]
     Output: 5
     Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
     Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
     """
-
-class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         left_pinter_buy, right_pointer_sell = 0, 1 # buy and sell pointers
         max_profit = 0
@@ -34,7 +32,7 @@ class Solution:
             else:
                 # means finding the lowest
                 left_pinter_buy = right_pointer_sell
-            # right pinter keep shifting until the end
+            # The right pointer keeps shifting until the end
             right_pointer_sell += 1
         return max_profit
 
