@@ -25,19 +25,19 @@ class Solution:
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        left_pinter_buy = 0
-        right_pointer_sell = 1
+        left_pinter_buy, right_pointer_sell = 0, 1 # buy and sell pointers
         max_profit = 0
-        for i in range(len(prices)):
-            if prices[left_pinter_buy] < prices[right_pointer_sell]:
-                if prices[right_pointer_sell] - prices[left_pinter_buy] > max_profit:
-                    max_profit = (prices[right_pointer_sell] - prices[left_pinter_buy])
+        while right_pointer_sell < len(prices):
+            if prices[right_pointer_sell] > prices[left_pinter_buy]:
+                # get maximum max_profit
+                max_profit = max(prices[right_pointer_sell] - prices[left_pinter_buy], max_profit)
             else:
-                if prices[left_pinter_buy] > prices[i]:
-                    left_pinter_buy = i
-                if prices[right_pointer_sell] < prices[i]:
-                    right_pointer_sell = i
+                # means finding the lowest
+                left_pinter_buy = right_pointer_sell
+            # right pinter keep shifting until the end
+            right_pointer_sell += 1
         return max_profit
+
 
 def main():
     prices = [7, 1, 5, 3, 6, 4]
