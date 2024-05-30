@@ -13,7 +13,7 @@ class Solution:
     ex:
     Input: n = 5
     Output: [0,1,1,2,1,2]
-    Explanation: 4 個一規律
+    Explanation: 2*i 個一規律
         0 --> 0000
         1 --> 0001
         2 --> 0010
@@ -27,15 +27,21 @@ class Solution:
         8 --> 1000 --> 1 + dp[n-8]
     """
     def countBits(self, n: int) -> List[int]:
-        pass
+        result = [0] * (n+1)
+        offset = 1
+        for i in range(1, n+1): # from 1 to n+1, because default 0
+            if offset * 2 == i:
+                offset = i
+            result[i] = 1 + result[i - offset]
+        return result
+
 
 def main():
-    a = 2147483645
+    n = 5
     sol = Solution()
-    result = sol.hammingWeight(a)
+    result = sol.countBits(n)
     print(result)
-    result = sol.hammingWeight2(a)
-    print(result)
+
 
 
 if __name__ == "__main__":
