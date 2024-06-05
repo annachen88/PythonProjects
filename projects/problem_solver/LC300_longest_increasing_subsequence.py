@@ -22,23 +22,27 @@ class Solution:
     LIS[3] = 1
 
     dynamic programming
-    start from the lastest LIS[3] = 1 -> (base case) to the front
+    ***(1)*** start from the lastest LIS[3] = 1 -> (base case) to the front
     LIS[3] = 1
-    LIS[2] = max(1 , 1+LIS[3]) -> but 4 is bigger than 3 -> 1
+    LIS[2] = max(1 , 1+LIS[3] ***(2)*** ) -> ***(3)*** but 4 is bigger than 3 -> 1
     LIS[1] = max(1, 1+LIS[2], 1+LIS[3]) -> max(1, 2, 2) -> 2
     LIS[0] = max(1, 1+1, 1+1, 1+2) -> 3
     -> time complexity o(n^2)
     """
 
     def lengthOfLIS(self, nums: List[int]) -> int:
+        LIS = [1] * len(nums)
+        for i in range(len(nums)-1, -1, -1):  # from the end ***(1)***
+            for j in range(i+1,len(nums)):  # get the i+1 ~ to the end ***(2)***
+                if nums[i] < nums[j]:  # ***(3)***
+                    LIS[i] = max(LIS[i], 1 + LIS[j])
+        return max(LIS)
 
 
 def main():
-    n = [3,0,1]
+    n = [1, 2, 4, 3]
     sol = Solution()
-    result = sol.missingNumber(n)
-    print(result)
-    result = sol.missingNumber2(n)
+    result = sol.lengthOfLIS(n)
     print(result)
 
 
